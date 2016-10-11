@@ -147,7 +147,9 @@
 		<action name="insertwork">
 			<result>/WEB-INF/content/insertwork.jsp</result>
 		</action>
-   		
+   		<action name="*">
+   			<result>/WEB-INF/content/error.jsp</result>
+   		</action>
     </package>
 
     <!-- Add packages here -->
