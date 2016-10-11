@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+    
+    	<!-- 查找作者的所有作品 -->
+   		<default-action-ref name="Menu"></default-action-ref>
+   		<action name="Menu">
+			<result>/WEB-INF/content/Menu.jsp</result>
+		</action>
+		<action name="search_author_all_book" class="action.ViewABookAction" method="searchauthorwork">
+			<result name="success">/WEB-INF/content/Author_books.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		
+    	<!-- 首页的登陆action  -->
+    	<action name="logicPro" class="action.LogicProAction">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error1.jsp</result>
+    	</action>
+    	
+    	<!-- 首页的注册action -->
+    	<action name="registPro" class="action.LogicProAction" method="regist">
+    		<result name="success">/WEB-INF/content/home.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 作者登陆action -->
+    	<action name="AuthorPro" class="action.AuthorProAction">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 作者存入action -->
+    	<action name="AuthorRegistPro" class="action.AuthorProAction" method="regist">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 作者更改action -->
+    	<action name="goto_change_author" class="action.AuthorProAction" method="change">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<!-- 作品更改action -->
+    	<action name="goto_change_book" class="action.BookProAction" method="change">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 查看所有作者信息action -->
+    	<action name="viewAuthors" class="action.ViewAuthorAction">
+    		<result name="success">/WEB-INF/content/All_Author.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<action name="change_or_delete_authors" class="action.ViewAuthorAction">
+    		<result name="success">/WEB-INF/content/Delete_or_Change_Author.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<!-- 作品登陆action -->
+    	<action name="BookPro" class="action.BookProAction">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	
+    	<!-- 作品存入action -->
+    	<action name="BookRegistPro" class="action.BookProAction" method="regist">
+    		<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/insert_author_need.jsp</result>
+    	</action>
+
+    	<!-- 查看所有作品信息action -->
+    	<action name="viewBooks" class="action.ViewABookAction">
+    		<result name="success">/WEB-INF/content/All_Book.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<action name="change_or_delete_books" class="action.ViewABookAction" >
+    		<result name="success">/WEB-INF/content/Delete_or_Change_Book.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+    	</action>
+    	<!-- 进入Author删除页面 这里需要将所有信息弄到页面上 -->
+		<action name="goto_delete_page" class="action.ViewAuthorAction">
+			<result name="success">/WEB-INF/content/Delete_Author.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		
+		<!-- 删除Author信息 -->
+		<action name="goto_delete_author" class="action.AuthorProAction" method="delete">
+			<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		<!-- 删除book信息 -->
+		<action name="goto_delete_book" class="action.BookProAction" method="delete">
+			<result name="success">/WEB-INF/content/Menu.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		<!-- 查找书 -->
+		<action name="search_one_book" class="action.BookProAction" method="search">
+			<result name="success">/WEB-INF/content/SearchOneBook.jsp</result>
+    		<result name="error">/WEB-INF/content/error.jsp</result>
+		</action>
+		
+		
+		
+    	<!-- 如果没有别的特殊action，默认界面是其本身 -->
+    	<action name="home">
+			<result>/WEB-INF/content/home.jsp</result>
+		</action>
+		<action name="register">
+			<result>/WEB-INF/content/register.jsp</result>
+		</action>
+		
+		<action name="OneBook">
+			<result>/WEB-INF/content/OneBook.jsp</result>
+		</action>
+		<action name="changeauthor">
+			<result>/WEB-INF/content/changeauthor.jsp</result>
+		</action>
+		<action name="changebook">
+			<result>/WEB-INF/content/changebook.jsp</result>
+		</action>
+		<action name="deleteauthor">
+			<result>/WEB-INF/content/deleteauthor.jsp</result>
+		</action>
+		<action name="deletebook">
+			<result>/WEB-INF/content/deletebook.jsp</result>
+		</action>
+		<action name="Search_Author">
+			<result>/WEB-INF/content/Search_Author.jsp</result>
+		</action>
+		<action name="Search_Title">
+			<result>/WEB-INF/content/Search_Title.jsp</result>
+		</action>
+		<action name="help">
+			<result>/WEB-INF/content/help.jsp</result>
+		</action>
+		<action name="insert_author">
+			<result>/WEB-INF/content/insert_author.jsp</result>
+		</action>
+		<action name="insertwork">
+			<result>/WEB-INF/content/insertwork.jsp</result>
+		</action>
+   		
+    </package>
+
+    <!-- Add packages here -->
+
+</struts>
